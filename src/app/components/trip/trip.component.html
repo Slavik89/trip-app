@@ -1,0 +1,7 @@
+<a (click)="transferData(trip)">
+  {{this.trip.city}}
+  <br>
+  {{this.trip.startDate.getDate().toString().padStart(2, "0")}}.{{(this.trip.startDate.getMonth() + 1).toString().padStart(2, "0")}}.{{this.trip.startDate.getFullYear()}} -
+  {{this.trip.endDate.getDate().toString().padStart(2, "0")}}.{{(this.trip.endDate.getMonth() + 1).toString().padStart(2, "0")}}.{{this.trip.endDate.getFullYear()}}  
+</a>
+<br>

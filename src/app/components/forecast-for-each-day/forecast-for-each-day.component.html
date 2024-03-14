@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let day of days">
+    {{this.dayOfWeekService.getDayOfWeek(day.datetime)}} {{day.icon}} {{Math.round(day.tempmin)}}&deg;/{{Math.round(day.tempmax)}}&deg;
+  </li>
+</ul>
