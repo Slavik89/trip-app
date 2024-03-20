@@ -7,25 +7,12 @@
 <app-trip *ngFor="let trip of tripsList | filter:filteredCity; 
                                 let i=index" [trip]="trip" (click)="transferChosenTrip(trip)"></app-trip>
 <button (click)="showForm()">Add new trip</button>
-<form *ngIf=isFormShown #tripForm="ngForm" (ngSubmit)="onSubmit(tripForm)">  
-  <p>Create a trip</p>
-  <div class="icon__container">
-    <input type="text" name="city" placeholder="Please select a city" ngModel required>    
-  </div>
-  <div>
-    <input type="text" name="startDate" placeholder="Select date" ngModel required>
-    <span class="calendar-icon" aria-hidden="true"></span>
-    <ng-template></ng-template>
-  </div>        
-  <div class="icon__container">
-    <input type="text" name="endDate" placeholder="Select date" ngModel required>
-    <span class="calendar-icon" aria-hidden="true"></span>
-   </div>  
-  
-  <button type="submit" [disabled]="!tripForm.valid">Save</button>
-  <button (click)="isFormShown = false">Cancel</button>
-</form>
-<app-calendar></app-calendar>
+
+
+
+
+<app-add-new-trip [isVisible]="isFormShown" [tripsList]="tripsList"></app-add-new-trip>
+
 <app-forecast-for-each-day [chosenTrip]="chosenTrip"></app-forecast-for-each-day>
 <app-weather-for-today [chosenTrip]="chosenTrip"></app-weather-for-today>
 <router-outlet></router-outlet>

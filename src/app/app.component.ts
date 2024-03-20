@@ -36,13 +36,8 @@ export class AppComponent implements OnInit {
   
   showForm() {
     this.isFormShown = true;
-  }  
-
-  onSubmit(tripForm: NgForm) {
-    console.log(tripForm.value);
-    this.isFormShown = false;
+    // console.log('clicked');
+    console.log(this.isFormShown);
   }
-  
-
 
 }

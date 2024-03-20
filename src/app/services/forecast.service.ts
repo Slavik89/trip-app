@@ -24,9 +24,7 @@ export class ForecastService {
 
   getForecastForToday(cityName: string): Observable<any> {
     this.cityName = cityName;
-    this.urlForCity = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${this.cityName}/today?unitGroup=metric&include=days&key=${this.API_KEY}&contentType=json`;
-    // console.log(this.cityName);
-    // console.log(this.urlForCity);
+    this.urlForCity = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${this.cityName}/today?unitGroup=metric&include=days&key=${this.API_KEY}&contentType=json`;    
     return this.http
               .get<any>(this.urlForCity);
   }
@@ -34,8 +32,8 @@ export class ForecastService {
   getForecatForEachDay(city: string, startDate: any, endDate: any) {
     this.startDateString = startDate.toISOString();
     this.endDateString = endDate.toISOString();
-    console.log(startDate.toISOString());
-    console.log(endDate.toISOString());
+    // console.log(startDate.toISOString());
+    // console.log(endDate.toISOString());
     this.urlForecastForEachDay = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}/${this.startDateString}/${this.endDateString}?unitGroup=metric&include=days&key=${this.API_KEY}&contentType=json`;
     return this.http
                 .get<any>(this.urlForecastForEachDay);

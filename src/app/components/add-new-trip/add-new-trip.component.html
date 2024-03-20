@@ -1,1 +1,22 @@
-<p>add-new-trip works!</p>
+
+  <form *ngIf="isVisible" #tripForm="ngForm" (ngSubmit)="onSubmit(tripForm)">  
+    <p>Create a trip</p>
+    <div class="icon__container">
+      <input type="text" name="city" placeholder="Please select a city" ngModel required>    
+    </div>
+    <div>
+      <input type="text" name="startDate" placeholder="Select date" [(ngModel)]="startDate" required>
+      <span class="calendar-icon" aria-hidden="true" (click)="isStartDateShown=!isStartDateShown"></span>
+      <app-calendar *ngIf="isStartDateShown" [isStartDateShown]="isStartDateShown" (chosenDate)="showStartDate($event)"></app-calendar>
+    </div>        
+    <div class="icon__container">
+      <input type="text" name="endDate" placeholder="Select date" [(ngModel)]="endDate" required>
+      <span class="calendar-icon" aria-hidden="true" (click)="isEndDateShown=!isEndDateShown"></span>
+      <app-calendar *ngIf="isEndDateShown" [isEndDateShown]="isEndDateShown" (chosenDate)="showEndDate($event)"></app-calendar>
+     </div>  
+    
+    <button type="submit" [disabled]="!tripForm.valid">Save</button>
+    <button (click)="isVisible = false">Cancel</button>
+  </form>
+
+

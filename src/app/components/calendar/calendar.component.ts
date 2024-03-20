@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 interface Day {
   dayOfMonth: number | null;
-  
+  date: Date;
 }
 
 @Component({
@@ -20,6 +20,9 @@ export class CalendarComponent implements OnInit {
   count = 0;
   dayOfWeekNumber!: number;
   firstWeekCount = 0;
+  @Input() isStartDateShown!: boolean;
+  @Input() isEndDateShown!: boolean;
+  @Output() chosenDate = new EventEmitter<Date>;
 
   ngOnInit(): void {    
     this.generateCalendar();
@@ -28,23 +31,28 @@ export class CalendarComponent implements OnInit {
 
 
   generateCalendar(): void {
+    let date = new Date((new Date()).getFullYear(), (new Date()).getMonth(), (new Date()).getDate() + this.count);
     for (let i = 0; i < 3; i++) {
+      
       if( i === 0 && (new Date((new Date()).getFullYear(), (new Date()).getMonth(), (new Date()).getDate() + this.count)).getDay() !== 0 ) {
         let dayOfWeekNumber = (new Date((new Date()).getFullYear(), (new Date()).getMonth(), (new Date()).getDate() + this.count)).getDay();
+        let date = new Date((new Date()).getFullYear(), (new Date()).getMonth(), (new Date()).getDate() + this.count);
         for (let m = 0; m < 7; m++) {          
           if (this.firstWeekCount < dayOfWeekNumber ) {
-            this.currentWeek.push({ dayOfMonth: null });
+            this.currentWeek.push({ dayOfMonth: null, date: date });
             this.firstWeekCount++;
           } else {            
             let dayOfMonth = (new Date((new Date()).getFullYear(), (new Date()).getMonth(), (new Date()).getDate() + this.count)).getDate();
-            this.currentWeek.push({ dayOfMonth: dayOfMonth });
+            let date = new Date((new Date()).getFullYear(), (new Date()).getMonth(), (new Date()).getDate() + this.count);
+            this.currentWeek.push({ dayOfMonth: dayOfMonth, date: date });
             this.count++;            
           }                 
         } 
       }  else {        
           for (let k = 0; k < 7; k++) {
             let dayOfMonth = (new Date((new Date()).getFullYear(), (new Date()).getMonth(), (new Date()).getDate() + this.count)).getDate();            
-            this.currentWeek.push({ dayOfMonth: dayOfMonth });
+            let date = new Date((new Date()).getFullYear(), (new Date()).getMonth(), (new Date()).getDate() + this.count);
+            this.currentWeek.push({ dayOfMonth: dayOfMonth, date: date });
               this.count++;
               if (this.count >= 15) {
                 break;
@@ -58,10 +66,13 @@ export class CalendarComponent implements OnInit {
         break;
       }
     } 
-    console.log(this.weeks);
+    // console.log(this.weeks);
   }
 
+
+  choseDate(date: Date) {
+    // console.log(date);
+    this.chosenDate.emit(date);
+  }
   
-
-
 }

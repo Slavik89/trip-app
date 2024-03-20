@@ -8,7 +8,7 @@
     <tbody>
       <tr *ngFor="let week of weeks">
         <ng-container *ngFor="let day of week">
-          <td>
+          <td (click)="choseDate(day.date)">
             {{ day.dayOfMonth }}
           </td>
         </ng-container>

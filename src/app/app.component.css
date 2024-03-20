@@ -1,9 +1,0 @@
-.icon__container {
-  position: relative;
-}
-
-.calendar-icon::after {
-  content: "\1F4C5"; /* Unicode символ календаря */ 
-  position: absolute;
-  left: 150px;   
-}
