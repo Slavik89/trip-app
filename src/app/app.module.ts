@@ -11,6 +11,8 @@ import { TripComponent } from './components/trip/trip.component';
 import { ForecastForEachDayComponent } from './components/forecast-for-each-day/forecast-for-each-day.component';
 import { AddNewTripComponent } from './components/add-new-trip/add-new-trip.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
