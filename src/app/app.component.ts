@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ForecastService } from './services/forecast.service';
 import { mockTrip } from './mocks/models/trip-info';
 import { TripDate } from './mocks/interfaces/trip-date';
@@ -6,6 +6,7 @@ import { kyivDateToday } from './mocks/models/kyiv-date-today';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AddNewTripFormComponent } from './components/add-new-trip-form/add-new-trip-form.component';
+import { AddTripService } from './services/add-trip/add-trip.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { AddNewTripFormComponent } from './components/add-new-trip-form/add-new-
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnChanges {
   // title = 'weather-forecast-app';  
   
   filteredCity: string = '';
@@ -21,26 +22,14 @@ export class AppComponent implements OnInit {
   chosenTrip: TripDate = kyivDateToday;
   isFormShown = false;
 
-  constructor(private httpService: ForecastService, public dialog: MatDialog) {}
+  constructor(private httpService: ForecastService, public dialog: MatDialog, public addTrip: AddTripService) {}
 
   ngOnInit(): void {
-    
+    //this.tripsList =
   }
 
-  getData() {
-    // this.httpService.getForecast().subscribe(data => console.log(data));
-    console.log('hello');
-  }  
-
-  transferChosenTrip(trip: TripDate) {
-    // console.log(trip);
-    this.chosenTrip = trip;
-  }
-  
-  showForm() {
-    this.isFormShown = true;
-    // console.log('clicked');
-    console.log(this.isFormShown);
+  ngOnChanges(): void {
+    this.tripsList = this.addTrip.getTripsList();
   }
 
   openForm(): void {
@@ -54,5 +43,20 @@ export class AppComponent implements OnInit {
       console.log('The dialog was closed');      
     });
   }
+
+  transferChosenTrip(trip: TripDate) {    
+    this.chosenTrip = trip;
+  }
+
+  /*
+  getData() {    
+    console.log('hello');
+  }
+  
+  showForm() {
+    this.isFormShown = true;    
+    console.log(this.isFormShown);
+  }
+  */
 
 }

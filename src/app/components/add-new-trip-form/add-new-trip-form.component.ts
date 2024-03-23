@@ -2,6 +2,7 @@ import { Component,  Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {FormGroup, FormControl, FormsModule, ReactiveFormsModule, FormBuilder} from '@angular/forms';
 import {JsonPipe} from '@angular/common';
+import { AddTripService } from 'src/app/services/add-trip/add-trip.service';
 
 @Component({
   selector: 'app-add-new-trip-form',
@@ -19,13 +20,15 @@ export class AddNewTripFormComponent {
   citiesList = ['Paris', 'London', 'Rome', 'Berlin', 'Madrid'];
 
   constructor(public dialogRef: MatDialogRef<AddNewTripFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data:any, private builder: FormBuilder) {}
+    @Inject(MAT_DIALOG_DATA) public data:any, private builder: FormBuilder, 
+    public addTrip: AddTripService) {}
 
     closeWindow(): void {
       this.dialogRef.close();
     }
 
     saveForm(data: any) {
+      this.addTrip.setTripsList(data);
       console.log(data);
       this.dialogRef.close();
     }
