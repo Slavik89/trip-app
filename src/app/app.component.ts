@@ -4,6 +4,9 @@ import { mockTrip } from './mocks/models/trip-info';
 import { TripDate } from './mocks/interfaces/trip-date';
 import { kyivDateToday } from './mocks/models/kyiv-date-today';
 import { NgForm } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { AddNewTripFormComponent } from './components/add-new-trip-form/add-new-trip-form.component';
+
 
 @Component({
   selector: 'app-root',
@@ -18,7 +21,7 @@ export class AppComponent implements OnInit {
   chosenTrip: TripDate = kyivDateToday;
   isFormShown = false;
 
-  constructor(private httpService: ForecastService) {}
+  constructor(private httpService: ForecastService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     
@@ -38,6 +41,18 @@ export class AppComponent implements OnInit {
     this.isFormShown = true;
     // console.log('clicked');
     console.log(this.isFormShown);
+  }
+
+  openForm(): void {
+    const dialogRef = this.dialog.open(AddNewTripFormComponent, {
+      height: '250px',
+      width: '400px',
+      
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');      
+    });
   }
 
 }
