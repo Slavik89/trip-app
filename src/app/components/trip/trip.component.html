@@ -1,10 +1,18 @@
-<a (click)="transferData(trip)">
-  {{this.trip.city}}
-  <br>
-  <div>
-    <img [src]="'/assets/images/cities/' + this.trip.city + '.png' ">
-  </div>
-  {{this.trip.startDate.getDate().toString().padStart(2, "0")}}.{{(this.trip.startDate.getMonth() + 1).toString().padStart(2, "0")}}.{{this.trip.startDate.getFullYear()}} -
-  {{this.trip.endDate.getDate().toString().padStart(2, "0")}}.{{(this.trip.endDate.getMonth() + 1).toString().padStart(2, "0")}}.{{this.trip.endDate.getFullYear()}}  
-</a>
-<br>
+<div class="trip__container">
+  <a (click)="transferData(trip)">    
+    <div>
+      <img class="city__image" [src]="'/assets/images/cities/' + this.trip.city + '.png' ">
+    </div>
+    <div class="trip__info">
+      <span class="city__name">{{this.trip.city}}</span>
+      <br>
+      <span class="trip__date">
+        {{this.trip.startDate.getDate().toString().padStart(2, "0")}}.{{(this.trip.startDate.getMonth() + 1).toString().padStart(2, "0")}}.{{this.trip.startDate.getFullYear()}} -
+        {{this.trip.endDate.getDate().toString().padStart(2, "0")}}.{{(this.trip.endDate.getMonth() + 1).toString().padStart(2, "0")}}.{{this.trip.endDate.getFullYear()}}  
+      </span>
+    </div>
+    
+    
+    
+  </a>
+</div>

@@ -1,0 +1,21 @@
+.trip__container {
+  display: inline-block;
+  border: 1px solid gray;
+  margin: 10px 10px 0 0;
+}
+
+.city__image {
+  height: 122px;
+}
+
+.trip__info {
+  margin-left: 10px;
+}
+
+.city__name {
+  font-weight: 500;
+}
+
+.trip__date {
+  color: #A0A0A0;
+}
