@@ -1,9 +1,8 @@
-<section>
-  
-</section>
+
 <ul>
   <li *ngFor="let day of days">
-    {{this.dayOfWeekService.getDayOfWeek(day.datetime)}} {{day.icon}} {{Math.round(day.tempmin)}}&deg;/{{Math.round(day.tempmax)}}&deg;
-    <div><img [src]="'/assets/images/weather/' + day.icon + '.png' "></div>    
+    {{this.dayOfWeekService.getDayOfWeek(day.datetime)}} 
+    <div><img class="weather__type" [src]="'/assets/images/weather/' + day.icon + '.png' " [title]="day.icon"></div> 
+    {{Math.round(day.tempmin)}}&deg;/{{Math.round(day.tempmax)}}&deg;   
   </li>
 </ul>
