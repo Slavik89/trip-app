@@ -1,0 +1,19 @@
+
+.trip {
+  display: flex;
+  flex-direction: row;
+}
+
+div.add__trip {
+  display: flex;
+  justify-content: center; /* Центруємо по горизонталі */
+  align-items: center; /* Центруємо по вертикалі */
+  width: 120px;
+  height: 120px;
+  background-color: #A0A0A0;
+  margin: 10px 10px 0 0;
+}
+
+div.add__trip:hover {
+ opacity: 0.8;
+}

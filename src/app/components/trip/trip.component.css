@@ -1,5 +1,5 @@
 .trip__container {
-  display: inline-block;
+  /* display: inline-block; */
   border: 1px solid gray;
   margin: 10px 10px 0 0;
 }

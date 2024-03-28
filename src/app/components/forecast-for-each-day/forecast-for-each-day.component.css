@@ -1,9 +1,11 @@
 ul {
+  display: flex;
+  flex-direction: row;
   list-style-type: none;
 }
 
 li {
-  display: inline-block;
+  /* display: inline-block; */
   margin-left: 10px;
 }
 

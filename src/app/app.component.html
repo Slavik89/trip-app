@@ -4,10 +4,20 @@
   <input type="text" name="search" [(ngModel)]="filteredCity">
 </div>
 
-<app-trip *ngFor="let trip of tripsList | filter:filteredCity; 
+<section class="trip">
+  <app-trip *ngFor="let trip of tripsList | filter:filteredCity; 
                                 let i=index" [trip]="trip" (click)="transferChosenTrip(trip)"></app-trip>
+  <div class="trip__button" (click)="openForm()">
+    <div class="add__trip">
+      <img src='assets/images/plus/plus.png' width="40">      
+    </div>  
+  </div>
+</section>
 
+
+<!-- 
 <button mat-raised-button color="primary" (click)="openForm()">Add new trip</button>
+-->
 
 <app-forecast-for-each-day [chosenTrip]="chosenTrip"></app-forecast-for-each-day>
 <app-weather-for-today [chosenTrip]="chosenTrip"></app-weather-for-today>
