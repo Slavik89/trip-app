@@ -4,23 +4,29 @@
   <input type="text" name="search" [(ngModel)]="filteredCity">
 </div>
 
-<section class="trip">
-  <app-trip *ngFor="let trip of tripsList | filter:filteredCity; 
-                                let i=index" [trip]="trip" (click)="transferChosenTrip(trip)"></app-trip>
-  <div class="trip__button" (click)="openForm()">
-    <div class="add__trip">
-      <img src='assets/images/plus/plus.png' width="40">      
-    </div>  
-  </div>
+<section class="main__container">
+  <section>
+    <section class="trip">
+      <app-trip *ngFor="let trip of tripsList | filter:filteredCity; 
+                                    let i=index" [trip]="trip" (click)="transferChosenTrip(trip)"></app-trip>
+      <div class="trip__button" (click)="openForm()">
+        <div class="add__trip">
+          <img src='assets/images/plus/plus.png' width="40">      
+        </div>  
+      </div>
+    </section>  
+  
+    <app-forecast-for-each-day [chosenTrip]="chosenTrip"></app-forecast-for-each-day>
+    
+  </section>
+  <app-weather-for-today [chosenTrip]="chosenTrip"></app-weather-for-today>
+
 </section>
 
 
-<!-- 
-<button mat-raised-button color="primary" (click)="openForm()">Add new trip</button>
--->
 
-<app-forecast-for-each-day [chosenTrip]="chosenTrip"></app-forecast-for-each-day>
-<app-weather-for-today [chosenTrip]="chosenTrip"></app-weather-for-today>
+
+
 <router-outlet></router-outlet>
 
 <!-- 
@@ -29,5 +35,9 @@
 
 <!-- 
 <app-add-new-trip [isVisible]="isFormShown" [tripsList]="tripsList"></app-add-new-trip>
+-->
+
+<!-- 
+<button mat-raised-button color="primary" (click)="openForm()">Add new trip</button>
 -->
 

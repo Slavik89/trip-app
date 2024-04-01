@@ -1,4 +1,10 @@
 
+section.main__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
 .trip {
   display: flex;
   flex-direction: row;

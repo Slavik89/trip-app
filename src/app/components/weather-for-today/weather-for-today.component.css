@@ -1,0 +1,39 @@
+section.weather__container {
+  width: 200px;
+  height: 230px;
+  background-color: rgb(23, 23, 73);
+  padding: 25px 0;
+  margin-top: 10px;
+}
+
+div.weather {
+  position: relative;
+  text-align: center;
+}
+
+span.temperature {
+  font-size: 40px;
+  position: absolute;
+  top: 14px;
+  color: lightblue;
+}
+
+p.day_of_week {  
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: lightblue;
+  margin-bottom: 25px;
+}
+
+p.city {
+  text-align: center;
+  font-size: 20px;
+  color: lightblue;
+}
+
+div.weather__container__2 {
+  padding: 0 0 0 40px;
+  text-align: left;
+  margin-bottom: 12px;
+}

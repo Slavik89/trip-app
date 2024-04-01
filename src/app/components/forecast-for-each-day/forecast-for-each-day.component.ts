@@ -31,8 +31,7 @@ export class ForecastForEachDayComponent implements OnInit, OnChanges {
     this.endDate = this.chosenTrip.endDate;
     
     this.httpService.getForecatForEachDay(this.city, this.startDate, this.endDate).subscribe(data => {      
-      this.days = data.days;
-      console.log(this.days);
+      this.days = data.days;      
     });
 
   }

@@ -1,12 +1,27 @@
-  <p>
-    {{ this.dayToday }}
-  </p>
-  <p>
-    {{ this.chosenTrip.city }}
-  </p>
-  <p>
-    {{ this.weather }}
-  </p>
-  <p>
-    {{ this.chosenTrip.startDate }}
-  </p>
+  <section class="weather__container">
+    <p class="day_of_week">
+      {{ this.dayToday }}
+    </p>    
+    <div class="weather">
+       <!--
+      <span>{{ this.weather }}</span>
+      -->
+      <div class="weather__container__2">
+      
+        <img [src]="'assets/images/weather/' + this.weather + '.png'" height="50">
+        
+        <span class="temperature">{{ Math.round(this.temperature) }}&deg;</span>
+             
+      </div>
+    </div>   
+    <p class="city">
+      {{ this.chosenTrip.city }}
+    </p>
+    <!--
+    <p>
+      {{ this.chosenTrip.startDate.getDate().toString().padStart(2, "0") }}
+    </p>
+    -->
+  </section>
+  
+
