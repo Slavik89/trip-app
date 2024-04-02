@@ -23,7 +23,7 @@ export class WeatherForTodayComponent implements OnInit, OnChanges, AfterViewIni
               private renderer: Renderer2) {}
 
   ngOnInit() {   
-   
+    
   }  
 
   ngOnChanges() {

@@ -14,11 +14,15 @@
           <img src='assets/images/plus/plus.png' width="40">      
         </div>  
       </div>
-    </section>  
-  
-    <app-forecast-for-each-day [chosenTrip]="chosenTrip"></app-forecast-for-each-day>
+    </section> 
+    
+    <section>
+      <h4>Week</h4>
+      <app-forecast-for-each-day [chosenTrip]="chosenTrip"></app-forecast-for-each-day>
+    </section>    
     
   </section>
+  
   <app-weather-for-today [chosenTrip]="chosenTrip"></app-weather-for-today>
 
 </section>
