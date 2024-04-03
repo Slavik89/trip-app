@@ -2,8 +2,7 @@ section.weather__container {
   width: 200px;
   height: 230px;
   background-color: rgb(23, 23, 73);
-  padding: 25px 0;
-  margin-top: 10px;
+  padding: 25px 0;  
 }
 
 div.weather {

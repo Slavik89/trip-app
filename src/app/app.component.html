@@ -1,12 +1,16 @@
 
 
 <div>
-  <input type="text" name="search" [(ngModel)]="filteredCity">
+  <input type="text" name="search" [(ngModel)]="filteredCity" placeholder="Search your trip">
 </div>
 
+<h4>List of trips</h4>
 <section class="main__container">
+  
   <section>
+    
     <section class="trip">
+       
       <app-trip *ngFor="let trip of tripsList | filter:filteredCity; 
                                     let i=index" [trip]="trip" (click)="transferChosenTrip(trip)"></app-trip>
       <div class="trip__button" (click)="openForm()">
@@ -17,7 +21,7 @@
     </section> 
     
     <section>
-      <h4>Week</h4>
+      <h4>Week - weather forecast</h4>
       <app-forecast-for-each-day [chosenTrip]="chosenTrip"></app-forecast-for-each-day>
     </section>    
     
