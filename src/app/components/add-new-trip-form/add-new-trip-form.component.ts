@@ -1,6 +1,6 @@
 import { Component,  Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import {FormGroup, FormControl, FormsModule, ReactiveFormsModule, FormBuilder} from '@angular/forms';
+import {FormGroup, FormControl, FormsModule, ReactiveFormsModule, FormBuilder, Validators} from '@angular/forms';
 import {JsonPipe} from '@angular/common';
 import { AddTripService } from 'src/app/services/add-trip/add-trip.service';
 
@@ -11,17 +11,20 @@ import { AddTripService } from 'src/app/services/add-trip/add-trip.service';
 })
 export class AddNewTripFormComponent {
 
-  range = new FormGroup({
-    city: new FormControl<string | null>(null),
-    startDate: new FormControl<Date | null>(null),
-    endDate: new FormControl<Date | null>(null),
-  });
-
-  citiesList = ['Paris', 'London', 'Rome', 'Berlin', 'Madrid'];
+  myForm!: FormGroup;
+  citiesList = ['Paris', 'London', 'Rome', 'Berlin', 'Madrid', 'Barcelona', 'Bucharest'];
 
   constructor(public dialogRef: MatDialogRef<AddNewTripFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data:any, private builder: FormBuilder, 
-    public addTrip: AddTripService) {}
+    @Inject(MAT_DIALOG_DATA) public data:any, private fb: FormBuilder, 
+    public addTrip: AddTripService) {
+
+      this.myForm = fb.group({
+        'city': ['', Validators.required],
+        'startDate': ['', Validators.required],
+        'endDate': ['', Validators.required]
+      });
+
+    }
 
     closeWindow(): void {
       this.dialogRef.close();
@@ -29,7 +32,7 @@ export class AddNewTripFormComponent {
 
     saveForm(data: any) {
       this.addTrip.setTripsList(data);
-      console.log(data);
+      // console.log(data);
       this.dialogRef.close();
     }
 

@@ -25,7 +25,7 @@ export class AppComponent implements OnInit, OnChanges {
   constructor(private httpService: ForecastService, public dialog: MatDialog, public addTrip: AddTripService) {}
 
   ngOnInit(): void {
-    //this.tripsList =
+    
   }
 
   ngOnChanges(): void {
@@ -40,7 +40,7 @@ export class AppComponent implements OnInit, OnChanges {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');      
+      // console.log('The dialog was closed');      
     });
   }
 
