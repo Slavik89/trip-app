@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Firestore, collectionData, collection } from '@angular/fire/firestore';
+import { inject } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ForecastService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public fireService: Firestore) { }
   
   urlForCity!: string;
   cityName!: string;
@@ -16,6 +18,9 @@ export class ForecastService {
   urlForecastForEachDay!: string;
   startDateString!: string;
   endDateString!: string;
+
+  item$ !: Observable<any[]>;
+  firestore: Firestore = inject(Firestore);
 
   getForecast(): Observable<any> {
     return this.http
@@ -38,5 +43,12 @@ export class ForecastService {
     return this.http
                 .get<any>(this.urlForecastForEachDay);
   }
+
+getTrips() {
+  const itemCollection = collection(this.firestore, 'trips');
+  this.item$ = collectionData(itemCollection);
+
+  return this.item$;
+}
 
 }

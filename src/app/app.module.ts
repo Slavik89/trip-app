@@ -22,6 +22,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule, NativeDateAdapter} from '@angular/material/core';
 import {MatCardModule} from '@angular/material/card';
+import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { firebaseConfig } from 'src/environment/firebase.config';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,9 @@ import {MatCardModule} from '@angular/material/card';
     MatDatepickerModule,
     ReactiveFormsModule,
     MatNativeDateModule,
-    MatCardModule
+    MatCardModule,
+    provideFirebaseApp(() => initializeApp(firebaseConfig)),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [NativeDateAdapter],
   bootstrap: [AppComponent]

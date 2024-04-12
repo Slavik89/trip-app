@@ -21,15 +21,18 @@ export class AppComponent implements OnInit, OnChanges {
   tripsList: TripDate[] = mockTrip;
   chosenTrip: TripDate = kyivDateToday;
   isFormShown = false;
+  trips !: any[];
 
   constructor(private httpService: ForecastService, public dialog: MatDialog, public addTrip: AddTripService) {}
 
   ngOnInit(): void {
-    
+    console.log(this.tripsList);
+    this.httpService.getTrips().subscribe(data => console.log(data[0].city));
   }
 
   ngOnChanges(): void {
     this.tripsList = this.addTrip.getTripsList();
+    
   }
 
   openForm(): void {
