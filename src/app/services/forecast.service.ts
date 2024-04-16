@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Firestore, collectionData, collection } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, getDoc, addDoc } from '@angular/fire/firestore';
 import { inject } from '@angular/core';
 
 @Injectable({
@@ -44,11 +44,21 @@ export class ForecastService {
                 .get<any>(this.urlForecastForEachDay);
   }
 
-getTrips() {
-  const itemCollection = collection(this.firestore, 'trips');
-  this.item$ = collectionData(itemCollection);
 
-  return this.item$;
-}
+  /*
+  getTrips() {
+    const itemCollection = collection(this.firestore, 'trips');
+    this.item$ = collectionData(itemCollection);
+    return this.item$;
+  }
+  */
+
+
+  /*
+  getTripsId() {
+    const itemCollection = collection(this.firestore, 'trips');   
+    return collectionData(itemCollection, {idField: 'id'}) as Observable<any[]>;;
+  }
+  */
 
 }

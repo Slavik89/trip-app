@@ -18,28 +18,35 @@ export class AppComponent implements OnInit, OnChanges {
   // title = 'weather-forecast-app';  
   
   filteredCity: string = '';
-  tripsList: TripDate[] = mockTrip;
+  tripsList: any[] = mockTrip;
   chosenTrip: TripDate = kyivDateToday;
   isFormShown = false;
+  
   trips !: any[];
 
   constructor(private httpService: ForecastService, public dialog: MatDialog, public addTrip: AddTripService) {}
 
   ngOnInit(): void {
-    console.log(this.tripsList);
-    this.httpService.getTrips().subscribe(data => console.log(data[0].city));
+    
+    this.addTrip.getTripsList().subscribe(data => {
+      this.tripsList = data;
+      // console.log(this.tripsList);
+    });
   }
 
   ngOnChanges(): void {
-    this.tripsList = this.addTrip.getTripsList();
+    // this.tripsList = this.addTrip.getTripsList(); 
     
+    this.addTrip.getTripsList().subscribe(data => {
+      this.tripsList = data
+    });
+      
   }
 
   openForm(): void {
     const dialogRef = this.dialog.open(AddNewTripFormComponent, {
       height: '250px',
-      width: '400px',
-      
+      width: '400px',      
     });
 
     dialogRef.afterClosed().subscribe(result => {

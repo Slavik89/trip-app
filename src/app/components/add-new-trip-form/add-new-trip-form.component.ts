@@ -30,10 +30,15 @@ export class AddNewTripFormComponent {
       this.dialogRef.close();
     }
 
+    /*
     saveForm(data: any) {
       this.addTrip.setTripsList(data);
-      // console.log(data);
       this.dialogRef.close();
     }
+    */
 
+    saveForm(data: any) {
+      this.addTrip.setTripsList(data);
+      this.dialogRef.close();
+    }
 }

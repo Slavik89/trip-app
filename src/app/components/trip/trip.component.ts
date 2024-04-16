@@ -9,19 +9,28 @@ import { TransferTripDataService } from 'src/app/services/transfer-trip-data/tra
 })
 export class TripComponent implements OnInit {
 
-@Input() trip!: TripDate;
-@Output() chosenTrip = new EventEmitter<TripDate>();
+  @Input() trip!: TripDate;
+  @Output() chosenTrip = new EventEmitter<TripDate>();
 
-constructor(private tripData: TransferTripDataService) {}
+  constructor(private tripData: TransferTripDataService) {}
 
-ngOnInit() {
-  
-}
+  ngOnInit() {
+    
+  }
 
-transferData(trip: TripDate) {
-  this.tripData.obtainData(trip);
+  transferData(trip: TripDate) {
+    this.tripData.obtainData(trip);
 
-  this.chosenTrip.emit(trip);
-}
+    this.chosenTrip.emit(trip);
+  }
+
+  convertSecondsToDate(timestamp: any) {
+    
+    let date = new Date(timestamp.seconds*1000);
+    
+    let convertedDate = 
+      `${date.getDate().toString().padStart(2, "0")}.${(date.getMonth() + 1).toString().padStart(2, "0")}.${date.getFullYear()}`
+    return convertedDate;
+  }
 
 }
