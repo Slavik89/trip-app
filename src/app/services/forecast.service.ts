@@ -37,28 +37,10 @@ export class ForecastService {
   getForecatForEachDay(city: string, startDate: any, endDate: any) {
     this.startDateString = startDate.toISOString();
     this.endDateString = endDate.toISOString();
-    // console.log(startDate.toISOString());
     // console.log(endDate.toISOString());
     this.urlForecastForEachDay = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}/${this.startDateString}/${this.endDateString}?unitGroup=metric&include=days&key=${this.API_KEY}&contentType=json`;
     return this.http
                 .get<any>(this.urlForecastForEachDay);
   }
-
-
-  /*
-  getTrips() {
-    const itemCollection = collection(this.firestore, 'trips');
-    this.item$ = collectionData(itemCollection);
-    return this.item$;
-  }
-  */
-
-
-  /*
-  getTripsId() {
-    const itemCollection = collection(this.firestore, 'trips');   
-    return collectionData(itemCollection, {idField: 'id'}) as Observable<any[]>;;
-  }
-  */
 
 }

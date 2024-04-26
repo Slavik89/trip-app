@@ -16,9 +16,9 @@
       <span class="trip__date">
         {{ convertSecondsToDate(this.trip.startDate) }} - {{ convertSecondsToDate(this.trip.endDate) }}  
       </span>
-    </div>
-    
-    
-    
+    </div>    
   </a>
+</div>
+<div>
+  <button mat-flat-button color="warn" (click)="deleteTrip(trip)">Delete</button>
 </div>
